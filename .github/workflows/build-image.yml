@@ -37,8 +37,8 @@ jobs:
     - name: Unshallow repository
       run: git fetch --prune --unshallow 2> /dev/null || true
 
-    - name: Tag master branch and push to repository
-      if: ${{ startsWith(github.ref, 'refs/heads/master') }}
+    - name: Tag main branch and push to repository
+      if: ${{ startsWith(github.ref, 'refs/heads/main') }}
       run: |
         
         # Push image
