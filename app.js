@@ -13,6 +13,8 @@ const cluster = require('cluster')
 const bodyParser = require('body-parser')
 const services = require('./app/services')
 const security = require('./app/security')
+const cron = require('node-cron');
+const scheduling = require('./config').scheduling || '* * * * *'
 
 // [IMPORTANT] HOST is set to 0.0.0.0 to be called outside of docker 
 const PORT = 80;
@@ -106,6 +108,12 @@ else {
 		console.log('healthcheckr ' + process.pid + ' running on http://' + HOST + ':' + PORT + ' to all incoming requests')
 	})
 
+	// Initialize cron job to check registered service status
+	cron.schedule(scheduling, () =>  {
+		console.log('Check services status now')
+		services.checkStatus()
+	})
+	
 	// This is for clustering
 	process.on('message', function (message) {
 		if (message.type === 'shutdown') {

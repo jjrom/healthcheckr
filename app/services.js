@@ -50,10 +50,11 @@ async function addService(req, res) {
 	});
 
 	// Add fields to input
+	var now = (new Date()).toISOString()
 	req.body._id = uuidv5(JSON.stringify(req.body.url).toLowerCase(), config.namespace)
 	req.body.status = await getStatus(req.body.ping_url || req.body.url)
-	req.body.created = Date.now();
-	req.body.last_checked = Date.now();
+	req.body.created = now
+	req.body.last_checked = now
 
 	// Insert new service (unicity on _id)
 	Datastore.insert(req.body, function (err, service) {
@@ -132,6 +133,50 @@ function getServices(req, res) {
 }
 
 /**
+ * Update status
+ * 
+ * @param {string} id 
+ */
+function checkStatus(id) {
+
+	var constraint = id ? {_id:id} : {};
+
+	Datastore.find(constraint, function(err, services) {
+
+		if (err) {
+			console.log(err);
+		}
+
+		// Convert services to array if not 
+		if ( !services instanceof Array ) {
+			services = [services]
+		}
+
+		for (var i = 0, ii = services.length; i < ii; i++) {
+			updateStatus(services[i])
+		}
+	})
+
+}
+
+/**
+ * Update service status
+ * 
+ * @param {object} service 
+ */
+async function updateStatus(service) {
+
+	var status = await getStatus(service.ping_url || service.url)
+
+	Datastore.update({ _id: service._id}, { $set: { status: status, last_checked: (new Date()).toISOString() } }, {}, function (err, numReplaced) {
+		if (err) {
+			console.log(err)
+		}
+	})
+
+}
+
+/**
  * Return the HTTP status of a url
  * 
  * @param {string} url 
@@ -157,6 +202,7 @@ module.exports = {
 	alive,
 	addService,
 	dropService,
+	checkStatus,
 	getService,
 	getServices
 }
