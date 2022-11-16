@@ -78,11 +78,12 @@ function dropService(req, res) {
 		}
 
 		if ( numRemoved === 0 ) {
-			return res.status(404)	
+			return res.status(404).json({
+				message: 'Not Found'
+			})	
 		}
 
 		return res.status(200).json({
-			status:"success",
 			message:"Removed service " + req.params.id
 		})
 
