@@ -3,6 +3,8 @@ Simple services health checker
 
 ## Add a service 
 
+### General case
+
     # Generated at http://jwtbuilder.jamiekurtz.com using the default JWT_PASSPHRASE set in config.js
     export HEALTHCHECKR_JWT_TOKEN=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJqanJvbS9oZWFsdGhjaGVja3IiLCJpYXQiOjE2Njg1ODg2MjQsImV4cCI6MjAxNTc0MzgyNCwiYXVkIjoibG9jYWxob3N0Iiwic3ViIjoiMTAwIn0.B22VwW1hSkMh4nFgS9KHDCcpIFEqv2CfH6P39lJ-9EA
 
@@ -17,6 +19,11 @@ Simple services health checker
     }
     '
 
+### Examples
+You can use the following script to post example services to the database :
+
+    ./postServices.sh -d data/services/
+    
 ## Remove a service
 
     curl -X DELETE http://localhost:4111/services/0836b658-3f75-5427-a642-86bd71d4460c -H "Content-Type: application/json" -H "Authorization: Bearer ${HEALTHCHECKR_JWT_TOKEN}"

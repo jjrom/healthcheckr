@@ -1,0 +1,8 @@
+{
+    "title":"OPM Mars Basemap v0.2",
+    "description":"This basemap of Mars in a combination of multiple raster and vector datasets that provides a characteristic view of the planet for a broader audience.",
+    "type":"XYZ",
+    "url":"https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mars-basemap-v0-2/all/{z}/{x}/{y}.png",
+    "ping_url":"https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-mars-basemap-v0-2/all/3/1/1.png",
+    "attributions":"OpenPlanetary"        
+}

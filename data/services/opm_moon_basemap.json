@@ -1,0 +1,8 @@
+{
+    "title":"OPM Moon Basemap v0.1",
+    "description":"This basemap of the Moon in a combination of multiple raster and vector datasets that provides a characteristic view for a broader audience.",
+    "type":"XYZ",
+    "url":"https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-moon-basemap-v0-1/all/{z}/{x}/{y}.png",
+    "ping_url":"https://cartocdn-gusc.global.ssl.fastly.net/opmbuilder/api/v1/map/named/opm-moon-basemap-v0-1/all/3/1/1.png",
+    "attributions":"OpenPlanetary"        
+}
