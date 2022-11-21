@@ -1,0 +1,7 @@
+{
+    "title":"PDDSP catalog",
+    "description":"Catalogue du Pôle de données et services Surfaces Planétaires.",
+    "type":"STAC",
+    "url":"https://pdssp.ias.universite-paris-saclay.fr/catalog/",
+    "attributions":"CNES"        
+}

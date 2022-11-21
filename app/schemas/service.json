@@ -9,7 +9,8 @@
         "type": "string"
       },
       "type": {
-        "type": "string"
+        "type": "string",
+        "enum": ["STAC", "WFS", "WMS", "WMTS", "XYZ"]
       },
       "url": {
         "type": "string"
