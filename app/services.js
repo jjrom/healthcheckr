@@ -10,6 +10,8 @@
 const fetch = require('node-fetch')
 const { v5: uuidv5 } = require('uuid')
 const nedb = require('nedb-revived')
+const Validator = require('jsonschema').Validator
+const serviceSchema = require('./schemas/service.json')
 const config = require('../config')
 
 // Initialize datastore
@@ -36,18 +38,16 @@ function alive(req, res) {
  */
 async function addService(req, res) {
 
-	var mandatories = ['url', 'description', 'type'];
-
 	// Check mandatory body content
 	if (!req.body) {
 		return res.status(400).send('Bad Request');
 	}
 
-	mandatories.forEach(element => {
-		if ( !req.body[element] ) {
-			return res.status(400).send('Bad Request - missing mandatory ' + element + ' property');
-		}
-	});
+	// Validate input service based on jsonschema
+	var validation = (new Validator()).validate(req.body, serviceSchema);
+	if ( !validation.valid ) {
+		return res.status(400).send('Bad Request - ' + validation.errors[0].message);
+	}
 
 	// Add fields to input
 	var now = (new Date()).toISOString()
