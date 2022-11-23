@@ -104,11 +104,11 @@ function getService(req, res) {
 			return res.status(500).send(err)
 		}
 
-		if ( !service ) {
+		if ( !service || service.length === 0 ) {
 			return res.status(404)	
 		}
 
-		return res.status(200).json(service)
+		return res.status(200).json(service[0])
 
 	})
 
