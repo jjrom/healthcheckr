@@ -1,8 +1,18 @@
 {
     "title":"Mars Colour MOLA Elevation",
     "description":"This basemap is a single color-coded raster data layer based on MOLA dataset.",
+    "providers":[
+        {
+          "name": "OpenPlanetary",
+          "roles": [
+            "producer",
+            "licensor"
+          ],
+          "url": "https://openplanetary.org"
+        }
+    ],
+    "ssys:targets":["Mars"],
     "type":"XYZ",
     "url":"http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola_color-noshade_global/{z}/{x}/{y}.png",
-    "ping_url":"http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola_color-noshade_global/3/1/1.png",
-    "attributions":"OpenPlanetary"        
+    "ping_url":"http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/mola_color-noshade_global/3/1/1.png"
 }

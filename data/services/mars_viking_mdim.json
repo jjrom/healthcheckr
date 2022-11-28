@@ -1,8 +1,18 @@
 {
     "title":"Mars Viking MDIM2.1",
     "description":"Single raster data layer based on Viking MDIM 2.1 dataset provided by [OpenPlanetary](https://www.openplanetary.org/opm-basemaps/global-viking-mdim2-1-colorized-mosaic)",
+    "providers":[
+        {
+          "name": "OpenPlanetary",
+          "roles": [
+            "producer",
+            "licensor"
+          ],
+          "url": "https://openplanetary.org"
+        }
+    ],
+    "ssys:targets":["Mars"],
     "type":"XYZ",
     "url":"http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/{z}/{x}/{y}.png",
-    "ping_url":"http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/3/1/1.png",
-    "attributions":"OpenPlanetary"        
+    "ping_url":"http://s3-eu-west-1.amazonaws.com/whereonmars.cartodb.net/viking_mdim21_global/3/1/1.png"
 }

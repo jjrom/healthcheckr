@@ -1,7 +1,17 @@
 {
     "title":"PDDSP catalog",
     "description":"Catalogue du Pôle de données et services Surfaces Planétaires.",
+    "providers":[
+        {
+          "name": "CNES",
+          "roles": [
+            "producer",
+            "licensor"
+          ],
+          "url": "https://cnes.fr"
+        }
+    ],
+    "ssys:targets":["Mars", "Moon"],
     "type":"STAC",
-    "url":"https://pdssp.ias.universite-paris-saclay.fr/catalog/",
-    "attributions":"CNES"        
+    "url":"https://pdssp.ias.universite-paris-saclay.fr/catalog/"
 }
