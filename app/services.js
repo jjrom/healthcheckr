@@ -7,12 +7,19 @@
  *
  */
 
+const https = require("https");
 const fetch = require('node-fetch')
 const { v5: uuidv5 } = require('uuid')
 const nedb = require('nedb-revived')
 const Validator = require('jsonschema').Validator
 const serviceSchema = require('./schemas/service.json')
 const config = require('../config')
+
+
+// custom agent as global variable
+const agent = new https.Agent({
+	rejectUnauthorized: false,
+});
 
 // Initialize datastore
 var Datastore = new nedb({
@@ -189,8 +196,15 @@ async function getStatus(url) {
 
 	var status = 0;
 
+	const headers = {};
+	
+	const options = {
+		headers,
+		agent
+	}
+	
 	try {
-		const response = await fetch(url)
+		const response = await fetch(url, options)
 		status = await response.status
 	} catch (err) {
 		console.error(err)
