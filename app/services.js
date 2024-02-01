@@ -196,10 +196,10 @@ async function getStatus(url) {
 
 	var status = 0;
 
-	const options = {};
+	var options = {};
 
 	if (url.indexOf('https:') !== -1) {
-		const headers = {};
+		var headers = {};
 		options = {
 			headers,
 			agent
