@@ -47,7 +47,7 @@
       },
       "type": {
         "type": "string",
-        "enum": ["STAC", "WFS", "WMS", "WMTS", "XYZ"]
+        "enum": ["STAC", "WFS", "WMS", "WMTS", "XYZ", "APP"]
       },
       "url": {
         "type": "string"
